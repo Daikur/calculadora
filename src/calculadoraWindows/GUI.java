@@ -14,6 +14,7 @@ public class GUI extends javax.swing.JFrame {
 
         jPanelResultado = new javax.swing.JPanel();
         textoResultado = new javax.swing.JTextField();
+        textoQuitar = new javax.swing.JTextField();
         jPanelNumeros = new javax.swing.JPanel();
         numero1 = new javax.swing.JButton();
         numero2 = new javax.swing.JButton();
@@ -25,31 +26,44 @@ public class GUI extends javax.swing.JFrame {
         numero7 = new javax.swing.JButton();
         numero8 = new javax.swing.JButton();
         numero9 = new javax.swing.JButton();
+        botonPunto = new javax.swing.JButton();
         jPanelOperandos = new javax.swing.JPanel();
         operandoSuma = new javax.swing.JButton();
         operandoMultiplicar = new javax.swing.JButton();
         resultado = new javax.swing.JButton();
         operandoRestar = new javax.swing.JButton();
         botonBorrar = new javax.swing.JButton();
+        quitar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        textoResultado.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         textoResultado.setEnabled(false);
+
+        textoQuitar.setEnabled(false);
+        textoQuitar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textoQuitarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelResultadoLayout = new javax.swing.GroupLayout(jPanelResultado);
         jPanelResultado.setLayout(jPanelResultadoLayout);
         jPanelResultadoLayout.setHorizontalGroup(
             jPanelResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelResultadoLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelResultadoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(textoResultado)
+                .addGroup(jPanelResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(textoQuitar)
+                    .addComponent(textoResultado))
                 .addContainerGap())
         );
         jPanelResultadoLayout.setVerticalGroup(
             jPanelResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelResultadoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(textoResultado, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelResultadoLayout.createSequentialGroup()
+                .addComponent(textoQuitar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textoResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -123,6 +137,13 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        botonPunto.setText(".");
+        botonPunto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonPuntoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelNumerosLayout = new javax.swing.GroupLayout(jPanelNumeros);
         jPanelNumeros.setLayout(jPanelNumerosLayout);
         jPanelNumerosLayout.setHorizontalGroup(
@@ -130,28 +151,30 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(jPanelNumerosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelNumerosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(numero0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanelNumerosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanelNumerosLayout.createSequentialGroup()
-                            .addComponent(numero1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(numero2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(numero3)
-                            .addGap(0, 0, Short.MAX_VALUE))
-                        .addGroup(jPanelNumerosLayout.createSequentialGroup()
-                            .addComponent(numero7)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(numero8)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(numero9)))
+                    .addGroup(jPanelNumerosLayout.createSequentialGroup()
+                        .addGroup(jPanelNumerosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(numero0, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanelNumerosLayout.createSequentialGroup()
+                                .addComponent(numero1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(numero2)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelNumerosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(numero3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(botonPunto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanelNumerosLayout.createSequentialGroup()
+                        .addComponent(numero7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(numero8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(numero9))
                     .addGroup(jPanelNumerosLayout.createSequentialGroup()
                         .addComponent(numero4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(numero5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(numero6)))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelNumerosLayout.setVerticalGroup(
             jPanelNumerosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,7 +195,9 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(numero2)
                     .addComponent(numero3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(numero0)
+                .addGroup(jPanelNumerosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(numero0)
+                    .addComponent(botonPunto))
                 .addGap(7, 7, 7))
         );
 
@@ -220,8 +245,9 @@ public class GUI extends javax.swing.JFrame {
         jPanelOperandosLayout.setVerticalGroup(
             jPanelOperandosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelOperandosLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(operandoRestar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(operandoMultiplicar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(operandoSuma)
@@ -234,6 +260,13 @@ public class GUI extends javax.swing.JFrame {
         botonBorrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonBorrarActionPerformed(evt);
+            }
+        });
+
+        quitar.setText("<-");
+        quitar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quitarActionPerformed(evt);
             }
         });
 
@@ -250,21 +283,25 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(quitar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botonBorrar)
-                .addGap(26, 26, 26))
+                .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanelResultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17)
-                .addComponent(botonBorrar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonBorrar)
+                    .addComponent(quitar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanelNumeros, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanelOperandos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(26, Short.MAX_VALUE))
+                    .addComponent(jPanelOperandos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -297,33 +334,39 @@ public class GUI extends javax.swing.JFrame {
 
     private void operandoSumaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_operandoSumaActionPerformed
         Double conversion = Double.parseDouble(this.textoResultado.getText());
-        listaNumeros.add(conversion);
-        listaOperaciones.add("+");
+        temp = conversion + temp;
         this.textoResultado.setText("");
+        op = "+";
+        format += conversion.toString().concat(op);
+        this.textoQuitar.setText(format);
     }//GEN-LAST:event_operandoSumaActionPerformed
 
     private void operandoMultiplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_operandoMultiplicarActionPerformed
         Double conversion = Double.parseDouble(this.textoResultado.getText());
-        listaNumeros.add(conversion);
-        listaOperaciones.add("*");
+        temp = conversion * temp;
         this.textoResultado.setText("");
+        op = "*";
+        format += conversion.toString().concat(op);
+        this.textoQuitar.setText(format);
     }//GEN-LAST:event_operandoMultiplicarActionPerformed
 
     private void resultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resultadoActionPerformed
         Double conversion = Double.parseDouble(this.textoResultado.getText());
-        listaNumeros.add(conversion);
-        Double respuesta = 0.0;
+        double respuesta = 0.0;
         String resultado = "";
-        if (listaOperaciones.get(0).equals("+")) {
-            respuesta = listaNumeros.get(0) + listaNumeros.get(1);
-        } else if (listaOperaciones.get(0).equals("*")) {
-            respuesta = listaNumeros.get(0) * listaNumeros.get(1);
-        } else if (listaOperaciones.get(0).equals("-")) {
-            respuesta = listaNumeros.get(0) - listaNumeros.get(1);
+        if (op.equals("+")) {
+            temp = temp + conversion;
         }
-        resultado = respuesta.toString();
-        this.textoResultado.setText(resultado);
-
+        if (op.equals("*")) {
+            temp = temp * conversion;
+        }
+        if (op.equals("-")) {
+            temp = temp - conversion;
+        }
+        format += conversion.toString();
+        this.textoQuitar.setText(format);
+        this.textoResultado.setText(temp.toString());
+        temp = 0.0;
 
     }//GEN-LAST:event_resultadoActionPerformed
 
@@ -349,10 +392,29 @@ public class GUI extends javax.swing.JFrame {
 
     private void operandoRestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_operandoRestarActionPerformed
         Double conversion = Double.parseDouble(this.textoResultado.getText());
-        listaNumeros.add(conversion);
-        listaOperaciones.add("-");
+        temp += (conversion * (-1));
         this.textoResultado.setText("");
+        op = "-";
+        format += conversion.toString().concat(op);
+        this.textoQuitar.setText(format);
     }//GEN-LAST:event_operandoRestarActionPerformed
+
+    private void textoQuitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoQuitarActionPerformed
+
+    }//GEN-LAST:event_textoQuitarActionPerformed
+
+    private void quitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitarActionPerformed
+        format = "";
+        temp = 0.0;
+        double conversion = 0.0;
+        op = "";
+        this.textoQuitar.setText("");
+        this.textoResultado.setText("");
+    }//GEN-LAST:event_quitarActionPerformed
+
+    private void botonPuntoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPuntoActionPerformed
+//        this.textoResultado.getText()
+    }//GEN-LAST:event_botonPuntoActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -388,6 +450,7 @@ public class GUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonBorrar;
+    private javax.swing.JButton botonPunto;
     private javax.swing.JPanel jPanelNumeros;
     private javax.swing.JPanel jPanelOperandos;
     private javax.swing.JPanel jPanelResultado;
@@ -404,9 +467,14 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton operandoMultiplicar;
     private javax.swing.JButton operandoRestar;
     private javax.swing.JButton operandoSuma;
+    private javax.swing.JButton quitar;
     private javax.swing.JButton resultado;
+    private javax.swing.JTextField textoQuitar;
     private javax.swing.JTextField textoResultado;
     // End of variables declaration//GEN-END:variables
     private ArrayList<Double> listaNumeros = new ArrayList<Double>();
     private ArrayList<String> listaOperaciones = new ArrayList<String>();
+    private Double temp = 0.0;
+    private String op;
+    private String format = "";
 }
