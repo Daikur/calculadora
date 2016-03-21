@@ -1,7 +1,5 @@
 package calculadoraWindows;
 
-import java.util.ArrayList;
-
 public class GUI extends javax.swing.JFrame {
 
     public GUI() {
@@ -367,7 +365,6 @@ public class GUI extends javax.swing.JFrame {
         this.textoQuitar.setText(format);
         this.textoResultado.setText(temp.toString());
         temp = 0.0;
-
     }//GEN-LAST:event_resultadoActionPerformed
 
     private void numero5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numero5ActionPerformed
@@ -472,8 +469,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField textoQuitar;
     private javax.swing.JTextField textoResultado;
     // End of variables declaration//GEN-END:variables
-    private ArrayList<Double> listaNumeros = new ArrayList<Double>();
-    private ArrayList<String> listaOperaciones = new ArrayList<String>();
     private Double temp = 0.0;
     private String op;
     private String format = "";
