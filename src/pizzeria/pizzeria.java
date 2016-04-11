@@ -1,23 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pizzeria;
 
 import java.util.List;
 
-/**
- *
- * @author daw1
- */
 public class pizzeria extends javax.swing.JFrame {
 
-    /**
-     * Creates new form pizzeria
-     */
+    Pizza p;
+
     public pizzeria() {
         initComponents();
+//      String masa, String tipo, String tamaño, List ingredientes
+        String masa = this.buttonGroup1.getSelection().getActionCommand();
+        String tipo = this.tipoPizza.getActionCommand();
+        String tamaño = this.spinnerTamaño.getValue().toString();
+        p = new Pizza(masa, tipo, tamaño, this.lista);
     }
 
     /**
@@ -60,6 +55,7 @@ public class pizzeria extends javax.swing.JFrame {
         panelMasa.setBorder(javax.swing.BorderFactory.createTitledBorder("Masa"));
 
         buttonGroup1.add(botonNormal);
+        botonNormal.setSelected(true);
         botonNormal.setText("Normal");
         botonNormal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -316,81 +312,90 @@ public class pizzeria extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNormalActionPerformed
-        precioMasa = 9.00;
-        this.labelMasa.setText(precioMasa.toString());
-        precioTotal = precioMasa + precioTipo + precioIngrediente;
-
-        this.campoTotal.setText(precioTotal.toString());
+//        precioMasa = 9.00;
+//        this.labelMasa.setText(precioMasa.toString());
+//        precioTotal = precioMasa + precioTipo + precioIngrediente;
+//
+//        this.campoTotal.setText(precioTotal.toString());
+        this.campoTotal.setText(p.calcularPrecio().toString());
     }//GEN-LAST:event_botonNormalActionPerformed
 
     private void botonIntegralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIntegralActionPerformed
-        precioMasa = 9.50;
-        this.labelMasa.setText(precioMasa.toString());
-        precioTotal = precioMasa + precioTipo + precioIngrediente;
-
-        this.campoTotal.setText(precioTotal.toString());
+//        precioMasa = 9.50;
+//        this.labelMasa.setText(precioMasa.toString());
+//        precioTotal = precioMasa + precioTipo + precioIngrediente;
+//
+//        this.campoTotal.setText(precioTotal.toString());
+        this.campoTotal.setText(p.calcularPrecio().toString());
     }//GEN-LAST:event_botonIntegralActionPerformed
 
     private void tipoPizzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoPizzaActionPerformed
-        String tipo = (String) this.tipoPizza.getSelectedItem();
-        if (tipo.equalsIgnoreCase("Básica")) {
-            precioTipo = 3.0;
-        } else if (tipo.equalsIgnoreCase("4 quesos")) {
-            precioTipo = 5.0;
-        } else if (tipo.equalsIgnoreCase("Barbacoa")) {
-            precioTipo = 7.0;
-        } else if (tipo.equalsIgnoreCase("Mexicana")) {
-            precioTipo = 8.50;
-        }
-        this.lagelTipoPizza.setText(precioTipo.toString());
-        precioTotal = precioMasa + precioTipo + precioIngrediente;
+//        String tipo = (String) this.tipoPizza.getSelectedItem();
+//        if (tipo.equalsIgnoreCase("Básica")) {
+//            precioTipo = 3.0;
+//        } else if (tipo.equalsIgnoreCase("4 quesos")) {
+//            precioTipo = 5.0;
+//        } else if (tipo.equalsIgnoreCase("Barbacoa")) {
+//            precioTipo = 7.0;
+//        } else if (tipo.equalsIgnoreCase("Mexicana")) {
+//            precioTipo = 8.50;
+//        }
+//        this.lagelTipoPizza.setText(precioTipo.toString());
+//        precioTotal = precioMasa + precioTipo + precioIngrediente;
+//
+//        this.campoTotal.setText(precioTotal.toString());
 
-        this.campoTotal.setText(precioTotal.toString());
+        this.campoTotal.setText(p.calcularPrecio().toString());
     }//GEN-LAST:event_tipoPizzaActionPerformed
 
     private void listaIngredientesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaIngredientesValueChanged
-        lista = this.listaIngredientes.getSelectedValuesList();
-        this.precioIngrediente = 0.0;
-        for (String i : lista) {
-            if (i.equalsIgnoreCase("jamón")) {
-                precioIngrediente += 0.50;
-                this.labelIngrediente.setText(precioIngrediente.toString());
-            }
-            if (i.equalsIgnoreCase("queso")) {
-                precioIngrediente += 0.75;
-                this.labelIngrediente.setText(precioIngrediente.toString());
-            }
-            if (i.equalsIgnoreCase("tomate")) {
-                precioIngrediente += 1.50;
-                this.labelIngrediente.setText(precioIngrediente.toString());
-            }
-            if (i.equalsIgnoreCase("cebolla")) {
-                precioIngrediente += 2.50;
-                this.labelIngrediente.setText(precioIngrediente.toString());
-            }
-            if (i.equalsIgnoreCase("olivas")) {
-                precioIngrediente += 1.0;
-                this.labelIngrediente.setText(precioIngrediente.toString());
-            }
-        }
-        this.labelIngrediente.setText(precioIngrediente.toString());
-        precioTotal = precioMasa + precioTipo + precioIngrediente;
-        this.labelListaIngredientes.setText(this.listaIngredientes.getSelectedValuesList().toString());
-        this.campoTotal.setText(precioTotal.toString());
+//        lista = this.listaIngredientes.getSelectedValuesList();
+//        this.precioIngrediente = 0.0;
+//        for (String i : lista) {
+//            if (i.equalsIgnoreCase("jamón")) {
+//                precioIngrediente += 0.50;
+//                this.labelIngrediente.setText(precioIngrediente.toString());
+//            }
+//            if (i.equalsIgnoreCase("queso")) {
+//                precioIngrediente += 0.75;
+//                this.labelIngrediente.setText(precioIngrediente.toString());
+//            }
+//            if (i.equalsIgnoreCase("tomate")) {
+//                precioIngrediente += 1.50;
+//                this.labelIngrediente.setText(precioIngrediente.toString());
+//            }
+//            if (i.equalsIgnoreCase("cebolla")) {
+//                precioIngrediente += 2.50;
+//                this.labelIngrediente.setText(precioIngrediente.toString());
+//            }
+//            if (i.equalsIgnoreCase("olivas")) {
+//                precioIngrediente += 1.0;
+//                this.labelIngrediente.setText(precioIngrediente.toString());
+//            }
+//        }
+//        this.labelIngrediente.setText(precioIngrediente.toString());
+//        precioTotal = precioMasa + precioTipo + precioIngrediente;
+//        this.labelListaIngredientes.setText(this.listaIngredientes.getSelectedValuesList().toString());
+//        this.campoTotal.setText(precioTotal.toString());
+
+        this.campoTotal.setText(p.calcularPrecio().toString());
     }//GEN-LAST:event_listaIngredientesValueChanged
 
     private void spinnerTamañoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spinnerTamañoStateChanged
-        precioTotal = precioMasa + precioTipo + precioIngrediente;
-        if (this.spinnerTamaño.getValue().toString().equalsIgnoreCase("mediana")) {
-            precioTotal = precioTotal * 1.15;
-        }
+//        precioTotal = precioMasa + precioTipo + precioIngrediente;
+//        if (this.spinnerTamaño.getValue().toString().equalsIgnoreCase("mediana")) {
+//            precioTotal = precioTotal * 1.15;
+//        }
+//
+//        if (this.spinnerTamaño.getValue().toString().equalsIgnoreCase("familiar")) {
+//            precioTotal = precioTotal * 1.30;
+//        }
+//        this.labelTamaño.setText(this.spinnerTamaño.getValue().toString());
+//
+//        this.campoTotal.setText(precioTotal.toString());
 
-        if (this.spinnerTamaño.getValue().toString().equalsIgnoreCase("familiar")) {
-            precioTotal = precioTotal * 1.30;
-        }
-        this.labelTamaño.setText(this.spinnerTamaño.getValue().toString());
-        
-        this.campoTotal.setText(precioTotal.toString());
+        this.campoTotal.setText(p.calcularPrecio().toString());
+
     }//GEN-LAST:event_spinnerTamañoStateChanged
 
     /**

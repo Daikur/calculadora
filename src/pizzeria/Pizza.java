@@ -118,6 +118,6 @@ public class Pizza {
 
     @Override
     public String toString() {
-        return "Pizza{" + "masa=" + masa + ", tipo=" + tipo + ", tamaño=" + tamaño + ", ingredientes=" + ingredientes + "Precio Masa: " + precioMasa + "Precio Tipo: " + precioTipo + "Precio Ingredientes: " + precioIngredientes + "Precio Final: " + precioFinal + '}';
+        return "Pizza{" + "masa=" + masa + ", tipo=" + tipo + ", tamaño=" + tamaño + ", ingredientes=" + ingredientes + "Precio Masa: " + precioMasa + "Precio Tipo: " + precioTipo + "Precio Ingredientes: " + precioIngredientes + "Precio Final: " + this.calcularPrecio() + '}';
     }
 }
