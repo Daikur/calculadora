@@ -19,6 +19,10 @@ public class Pizza {
     private final double ingOlivas = 1.0;
     private final double tamMediana = 1.15;
     private final double tamFamiliar = 1.3;
+    private double precioMasa = 0.0;
+    private double precioTipo = 0.0;
+    private double precioTamaño = 0.0;
+    private double precioIngredientes = 0.0;
     private double precioFinal = 0.0;
 
     public Pizza(String masa, String tipo, String tamaño, List ingredientes) {
@@ -61,51 +65,59 @@ public class Pizza {
     }
 
     public Double calcularPrecio() {
+
         if (masa.equalsIgnoreCase("Normal")) {
-            precioFinal = this.masaNormal;
+            precioMasa = this.masaNormal;
         } else {
-            precioFinal = this.masaIntegral;
+            precioMasa = this.masaIntegral;
         }
 
         if (tipo.equalsIgnoreCase("Básica")) {
-            precioFinal += tipoBasica;
+            precioTipo = tipoBasica;
         } else if (tipo.equalsIgnoreCase("4 quesos")) {
-            precioFinal += tipoCuatroQuesos;
+            precioTipo = tipoCuatroQuesos;
         } else if (tipo.equalsIgnoreCase("Barbacoa")) {
-            precioFinal += tipoBarbacoa;
+            precioTipo = tipoBarbacoa;
         } else if (tipo.equalsIgnoreCase("Mexicana")) {
-            precioFinal += tipoMexicana;
+            precioTipo = tipoMexicana;
         }
 
         for (String i : ingredientes) {
             if (i.equalsIgnoreCase("jamón")) {
-                precioFinal += ingJamon;
+                precioIngredientes += ingJamon;
 
             }
             if (i.equalsIgnoreCase("queso")) {
-                precioFinal += ingQueso;
+                precioIngredientes += ingQueso;
 
             }
             if (i.equalsIgnoreCase("tomate")) {
-                precioFinal += ingTomate;
+                precioIngredientes += ingTomate;
 
             }
             if (i.equalsIgnoreCase("cebolla")) {
-                precioFinal += ingCebolla;
+                precioIngredientes += ingCebolla;
 
             }
             if (i.equalsIgnoreCase("olivas")) {
-                precioFinal += ingOlivas;
+                precioIngredientes += ingOlivas;
 
             }
         }
+        precioFinal = precioMasa + precioTipo + precioIngredientes;
+
         if (tamaño.equalsIgnoreCase("Mediana")) {
-            precioFinal += tamMediana;
+            precioFinal = precioFinal * tamMediana;
         }
         if (tamaño.equalsIgnoreCase("Familiar")) {
-            precioFinal += tamFamiliar;
+            precioFinal = precioFinal * tamFamiliar;
         }
 
         return precioFinal;
+    }
+
+    @Override
+    public String toString() {
+        return "Pizza{" + "masa=" + masa + ", tipo=" + tipo + ", tamaño=" + tamaño + ", ingredientes=" + ingredientes + "Precio Masa: " + precioMasa + "Precio Tipo: " + precioTipo + "Precio Ingredientes: " + precioIngredientes + "Precio Final: " + precioFinal + '}';
     }
 }
