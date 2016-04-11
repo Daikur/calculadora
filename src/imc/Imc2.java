@@ -42,6 +42,7 @@ public class Imc2 extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         campoPeso = new javax.swing.JSpinner();
         campoAltura = new javax.swing.JSpinner();
+        jSeparator1 = new javax.swing.JSeparator();
         jBoton = new javax.swing.JPanel();
         botonCalcular = new javax.swing.JButton();
         jPanelIMC = new javax.swing.JPanel();
@@ -97,11 +98,16 @@ public class Imc2 extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jLabel4))
                 .addContainerGap(38, Short.MAX_VALUE))
+            .addGroup(jPanelPesoAlturaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSeparator1)
+                .addContainerGap())
         );
         jPanelPesoAlturaLayout.setVerticalGroup(
             jPanelPesoAlturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelPesoAlturaLayout.createSequentialGroup()
-                .addContainerGap()
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelPesoAlturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelPeso)
                     .addComponent(jLabel2)
@@ -312,6 +318,7 @@ public class Imc2 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelIMC;
     private javax.swing.JPanel jPanelPesoAltura;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel labelAltura;
     private javax.swing.JLabel labelIMC;
     private javax.swing.JLabel labelPeso;
