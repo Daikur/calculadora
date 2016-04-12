@@ -8,10 +8,13 @@ public class pizzeria extends javax.swing.JFrame {
 
     public pizzeria() {
         initComponents();
+        this.botonNormal.setActionCommand("Normal");
+        this.botonIntegral.setActionCommand("Integral");
 //      String masa, String tipo, String tamaño, List ingredientes
         String masa = this.buttonGroup1.getSelection().getActionCommand();
-        String tipo = this.tipoPizza.getActionCommand();
+        String tipo = this.tipoPizza.getSelectedItem().toString();
         String tamaño = this.spinnerTamaño.getValue().toString();
+        this.lista = this.listaIngredientes.getSelectedValuesList();
         p = new Pizza(masa, tipo, tamaño, this.lista);
     }
 
@@ -37,18 +40,8 @@ public class pizzeria extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         spinnerTamaño = new javax.swing.JSpinner();
         panelResultado = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        labelIngrediente = new javax.swing.JLabel();
-        lagelTipoPizza = new javax.swing.JLabel();
-        labelMasa = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        labelTamaño = new javax.swing.JLabel();
-        campoTotal = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        labelListaIngredientes = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        areaPedido = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,6 +50,11 @@ public class pizzeria extends javax.swing.JFrame {
         buttonGroup1.add(botonNormal);
         botonNormal.setSelected(true);
         botonNormal.setText("Normal");
+        botonNormal.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                botonNormalItemStateChanged(evt);
+            }
+        });
         botonNormal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonNormalActionPerformed(evt);
@@ -65,6 +63,11 @@ public class pizzeria extends javax.swing.JFrame {
 
         buttonGroup1.add(botonIntegral);
         botonIntegral.setText("Integral");
+        botonIntegral.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                botonIntegralItemStateChanged(evt);
+            }
+        });
         botonIntegral.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonIntegralActionPerformed(evt);
@@ -175,7 +178,7 @@ public class pizzeria extends javax.swing.JFrame {
                 .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(spinnerTamaño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         panelDatosLayout.setVerticalGroup(
             panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,92 +200,25 @@ public class pizzeria extends javax.swing.JFrame {
 
         panelResultado.setBorder(javax.swing.BorderFactory.createTitledBorder("Pedido"));
 
-        jLabel2.setText("MASA");
-
-        jLabel3.setText("TIPO PIZZA");
-
-        jLabel4.setText("INGREDIENTE PIZZA");
-
-        jLabel5.setText("TOTAL");
-
-        labelIngrediente.setText("0");
-
-        lagelTipoPizza.setText("0");
-
-        labelMasa.setText("0");
-
-        jLabel6.setText("TAMAÑO");
-
-        labelTamaño.setText("Pequeña");
-
-        campoTotal.setText("0");
-
-        labelListaIngredientes.setText(" ");
+        areaPedido.setColumns(20);
+        areaPedido.setRows(5);
+        jScrollPane2.setViewportView(areaPedido);
 
         javax.swing.GroupLayout panelResultadoLayout = new javax.swing.GroupLayout(panelResultado);
         panelResultado.setLayout(panelResultadoLayout);
         panelResultadoLayout.setHorizontalGroup(
             panelResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelResultadoLayout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addGroup(panelResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelResultadoLayout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(26, 26, 26)
-                        .addComponent(labelListaIngredientes, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addGroup(panelResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelResultadoLayout.createSequentialGroup()
-                                .addComponent(campoTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(80, 80, 80))
-                            .addGroup(panelResultadoLayout.createSequentialGroup()
-                                .addGap(23, 23, 23)
-                                .addGroup(panelResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelIngrediente, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(labelTamaño, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lagelTipoPizza, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(labelMasa, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addComponent(jLabel7)
-                        .addGap(19, 19, 19))
-                    .addGroup(panelResultadoLayout.createSequentialGroup()
-                        .addGroup(panelResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap()
+                .addComponent(jScrollPane2)
+                .addContainerGap())
         );
         panelResultadoLayout.setVerticalGroup(
             panelResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelResultadoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(labelMasa))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(lagelTipoPizza, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(labelIngrediente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(labelListaIngredientes))
-                .addGap(14, 14, 14)
-                .addGroup(panelResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelResultadoLayout.createSequentialGroup()
-                        .addGroup(panelResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(labelTamaño))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                        .addGroup(panelResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(campoTotal))
-                        .addGap(38, 38, 38))
-                    .addGroup(panelResultadoLayout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -317,7 +253,7 @@ public class pizzeria extends javax.swing.JFrame {
 //        precioTotal = precioMasa + precioTipo + precioIngrediente;
 //
 //        this.campoTotal.setText(precioTotal.toString());
-        this.campoTotal.setText(p.calcularPrecio().toString());
+
     }//GEN-LAST:event_botonNormalActionPerformed
 
     private void botonIntegralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIntegralActionPerformed
@@ -326,7 +262,7 @@ public class pizzeria extends javax.swing.JFrame {
 //        precioTotal = precioMasa + precioTipo + precioIngrediente;
 //
 //        this.campoTotal.setText(precioTotal.toString());
-        this.campoTotal.setText(p.calcularPrecio().toString());
+        this.areaPedido.setText(p.toString());
     }//GEN-LAST:event_botonIntegralActionPerformed
 
     private void tipoPizzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoPizzaActionPerformed
@@ -345,40 +281,35 @@ public class pizzeria extends javax.swing.JFrame {
 //
 //        this.campoTotal.setText(precioTotal.toString());
 
-        this.campoTotal.setText(p.calcularPrecio().toString());
+        this.areaPedido.setText(p.toString());
     }//GEN-LAST:event_tipoPizzaActionPerformed
 
     private void listaIngredientesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaIngredientesValueChanged
-//        lista = this.listaIngredientes.getSelectedValuesList();
-//        this.precioIngrediente = 0.0;
-//        for (String i : lista) {
-//            if (i.equalsIgnoreCase("jamón")) {
-//                precioIngrediente += 0.50;
-//                this.labelIngrediente.setText(precioIngrediente.toString());
-//            }
-//            if (i.equalsIgnoreCase("queso")) {
-//                precioIngrediente += 0.75;
-//                this.labelIngrediente.setText(precioIngrediente.toString());
-//            }
-//            if (i.equalsIgnoreCase("tomate")) {
-//                precioIngrediente += 1.50;
-//                this.labelIngrediente.setText(precioIngrediente.toString());
-//            }
-//            if (i.equalsIgnoreCase("cebolla")) {
-//                precioIngrediente += 2.50;
-//                this.labelIngrediente.setText(precioIngrediente.toString());
-//            }
-//            if (i.equalsIgnoreCase("olivas")) {
-//                precioIngrediente += 1.0;
-//                this.labelIngrediente.setText(precioIngrediente.toString());
-//            }
-//        }
+        lista = this.listaIngredientes.getSelectedValuesList();
+        this.precioIngrediente = 0.0;
+        for (String i : lista) {
+            if (i.equalsIgnoreCase("jamón")) {
+                p.setIngredientes(lista);
+            }
+            if (i.equalsIgnoreCase("queso")) {
+                p.setIngredientes(lista);
+            }
+            if (i.equalsIgnoreCase("tomate")) {
+                p.setIngredientes(lista);
+            }
+            if (i.equalsIgnoreCase("cebolla")) {
+                p.setIngredientes(lista);
+            }
+            if (i.equalsIgnoreCase("olivas")) {
+                p.setIngredientes(lista);
+            }
+        }
 //        this.labelIngrediente.setText(precioIngrediente.toString());
 //        precioTotal = precioMasa + precioTipo + precioIngrediente;
 //        this.labelListaIngredientes.setText(this.listaIngredientes.getSelectedValuesList().toString());
 //        this.campoTotal.setText(precioTotal.toString());
 
-        this.campoTotal.setText(p.calcularPrecio().toString());
+        this.areaPedido.setText(p.toString());
     }//GEN-LAST:event_listaIngredientesValueChanged
 
     private void spinnerTamañoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spinnerTamañoStateChanged
@@ -394,13 +325,21 @@ public class pizzeria extends javax.swing.JFrame {
 //
 //        this.campoTotal.setText(precioTotal.toString());
 
-        this.campoTotal.setText(p.calcularPrecio().toString());
+        this.areaPedido.setText(p.toString());
 
     }//GEN-LAST:event_spinnerTamañoStateChanged
 
-    /**
-     * @param args the command line arguments
-     */
+    private void botonNormalItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_botonNormalItemStateChanged
+        this.areaPedido.setText(p.toString());
+        p.setMasa("Normal");
+
+    }//GEN-LAST:event_botonNormalItemStateChanged
+
+    private void botonIntegralItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_botonIntegralItemStateChanged
+        this.areaPedido.setText(p.toString());
+        p.setMasa("Integral");
+    }//GEN-LAST:event_botonIntegralItemStateChanged
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -439,23 +378,13 @@ public class pizzeria extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea areaPedido;
     private javax.swing.JRadioButton botonIntegral;
     private javax.swing.JRadioButton botonNormal;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JLabel campoTotal;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel labelIngrediente;
-    private javax.swing.JLabel labelListaIngredientes;
-    private javax.swing.JLabel labelMasa;
-    private javax.swing.JLabel labelTamaño;
-    private javax.swing.JLabel lagelTipoPizza;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JList listaIngredientes;
     private javax.swing.JPanel panelDatos;
     private javax.swing.JPanel panelIngredientesExtra;

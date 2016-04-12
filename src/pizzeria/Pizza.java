@@ -21,7 +21,6 @@ public class Pizza {
     private final double tamFamiliar = 1.3;
     private double precioMasa = 0.0;
     private double precioTipo = 0.0;
-    private double precioTamaño = 0.0;
     private double precioIngredientes = 0.0;
     private double precioFinal = 0.0;
 
@@ -81,7 +80,7 @@ public class Pizza {
         } else if (tipo.equalsIgnoreCase("Mexicana")) {
             precioTipo = tipoMexicana;
         }
-
+        precioIngredientes = 0.0;
         for (String i : ingredientes) {
             if (i.equalsIgnoreCase("jamón")) {
                 precioIngredientes += ingJamon;
@@ -118,6 +117,6 @@ public class Pizza {
 
     @Override
     public String toString() {
-        return "Pizza{" + "masa=" + masa + ", tipo=" + tipo + ", tamaño=" + tamaño + ", ingredientes=" + ingredientes + "Precio Masa: " + precioMasa + "Precio Tipo: " + precioTipo + "Precio Ingredientes: " + precioIngredientes + "Precio Final: " + this.calcularPrecio() + '}';
+        return "masa=" + masa + '\t' + "Precio Masa: " + precioMasa + '\n' + "Tipo=" + tipo + '\t' + "Precio Tipo: " + precioTipo + '\n' + "Tamaño: " + tamaño + '\n' + "Ingredientes: " + ingredientes + '\t' + "Precio Ingredientes: " + precioIngredientes + '\n' + "Precio Final: " + this.calcularPrecio();
     }
 }
